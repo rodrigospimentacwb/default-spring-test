@@ -1,8 +1,6 @@
-FROM alpine:latest
+FROM alpine:latest as builder
 
 WORKDIR /app
-
-ADD build.sh /app
 
 RUN apk update && \
     apk upgrade && \
@@ -10,6 +8,6 @@ RUN apk update && \
     apk add openjdk11 && \
     apk add maven && \
     apk add git && \
-    chmod +x /app/build.sh
-
-ENTRYPOINT ["/app/build.sh"]
+    git clone https://github.com/rodrigospimentacwb/default-spring-test.git && \
+    cd default-spring-test && \
+    mvn clean install
