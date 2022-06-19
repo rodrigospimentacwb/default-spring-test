@@ -1,0 +1,23 @@
+FROM alpine:latest as builder
+
+WORKDIR /app
+
+RUN apk update && \
+    apk upgrade && \
+    apk add bash && \
+    apk add openjdk11 && \
+    apk add maven && \
+    apk add git && \
+    git clone https://github.com/rodrigospimentacwb/default-spring-test.git && \
+    cd default-spring-test && \
+    mvn clean install
+
+FROM alpine:latest
+WORKDIR /app
+COPY --from=builder /app/default-spring-test/target/hello-world.jar .
+RUN apk update && \
+    apk upgrade && \
+    apk add bash && \
+    apk add openjdk11
+EXPOSE 8080
+ENTRYPOINT ["java","-jar", "hello-world.jar"]

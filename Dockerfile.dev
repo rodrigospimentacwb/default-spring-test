@@ -1,0 +1,15 @@
+FROM alpine:latest
+
+WORKDIR /app
+
+ADD build.sh /app
+
+RUN apk update && \
+    apk upgrade && \
+    apk add bash && \
+    apk add openjdk11 && \
+    apk add maven && \
+    apk add git && \
+    chmod +x /app/build.sh
+
+ENTRYPOINT ["/app/build.sh"]

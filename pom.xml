@@ -8,6 +8,9 @@
 		<version>2.7.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
+	<packaging>jar</packaging>
+
 	<groupId>comr.br.pepper.hello</groupId>
 	<artifactId>hello</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -30,6 +33,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>hello-world</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

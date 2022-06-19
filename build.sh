@@ -10,4 +10,3 @@
 git clone https://github.com/rodrigospimentacwb/rodrigospimentacwb-default-spring-test.git
 cd rodrigospimentacwb-default-spring-test
 mvn clean install
-java -jar /app/rodrigospimentacwb-default-spring-test/target/hello-0.0.1-SNAPSHOT.jar
